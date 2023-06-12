@@ -18,7 +18,10 @@
     "url": "https://github.com/Dexxter300/goit-js-hw-10/issues"
   },
   "dependencies": {
-    "modern-normalize": "^1.1.0"
+    "bootstrap-select": "^1.13.18",
+    "modern-normalize": "^1.1.0",
+    "parcel-transformer-hbs": "^1.0.4",
+    "slim-select": "^2.5.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",

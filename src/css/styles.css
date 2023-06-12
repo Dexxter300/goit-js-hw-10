@@ -1,0 +1,44 @@
+:root {
+    /* Fonts */
+    --primary-font: "Roboto", sans-serif;
+
+    /* Text colors */
+    --primary-txt-cl: #2e2f42;
+}
+
+
+body {
+    font-family: var(--primary-font);
+    font-size: 20px;
+    letter-spacing: 0.02em;
+    color: var(--primary-txt-cl);
+}
+
+.temperament {
+    font-size: 30px;
+    font-weight: bold;
+}
+.cat-info {
+    margin-top: 20px;
+    display: flex;
+        flex-wrap: wrap;
+        /* gap: 24px; */
+        /* margin-right: -24px; */
+        /* flex-direction: column;
+        align-items: flex-start; */
+    
+}
+.card-img {
+    /* display: flex; */
+}
+.card-body {
+    margin-bottom: auto;
+    margin-left: 20PX;
+    width: 600px;
+}
+
+.card-title {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    font-size: 60px;
+}
