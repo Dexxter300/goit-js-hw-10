@@ -1,4 +1,4 @@
-import { fetchCatByBreed, fetchCatImg} from "./cat-api.js"
+import { fetchCatByBreed, fetchCatImg, fetchBreeds} from "./cat-api.js"
 import cardTpl from "./cat-card.hbs"
 
 
@@ -11,28 +11,14 @@ const refs = {
 }
 
 
-
-const url = `https://api.thecatapi.com/v1/breeds`;
-const API_KEY = 'live_ilRbQFMfKxyypjtmd2ntXyg3yvfeWpXbDJdvVq1HbhsvRa4Xmer7BJ7ni3Ce0JHo';
+// const url = `https://api.thecatapi.com/v1/breeds`;
+// const API_KEY = 'live_ilRbQFMfKxyypjtmd2ntXyg3yvfeWpXbDJdvVq1HbhsvRa4Xmer7BJ7ni3Ce0JHo';
 
 refs.selectInput.style.display = 'none';
 refs.errorAlert.style.display = 'none';
 
 
-
-fetch(url, {
-    headers: {
-    'x-api-key': API_KEY
-    }
-})
-    .then(response => {
-    return response.json();
-})
-    .then(setOption)
-    .catch(error => {
-        onError()
-        console.log(error)
-    })
+fetchBreeds().then(setOption)
 
 function setOption(data) {
     data.map(el => {
@@ -40,7 +26,6 @@ function setOption(data) {
     })
     onSuccess();
 }
-
 
 
 function onLoading() {
@@ -56,18 +41,19 @@ function onSuccess() {
     refs.catBox.style.display = 'flex';
 }
 function onError() {
-    refs.selectInput.style.display = 'none';
+    refs.selectInput.style.display = 'block';
     refs.loading.style.display = 'none';
     refs.errorAlert.style.display = 'block';
     refs.catBox.style.display = 'none';
 }
 
-refs.selectInput.addEventListener('input', (event) => {
+refs.selectInput.addEventListener('change', (event) => {
     onLoading()
     let selected = refs.selectInput.options[refs.selectInput.selectedIndex].value;
     let catInfo = null;
     fetchCatByBreed(selected)
         .then(data => {
+            // console.log(data)
             onSuccess()
             catInfo = {
                 ...data
